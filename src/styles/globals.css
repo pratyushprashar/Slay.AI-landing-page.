@@ -1,0 +1,45 @@
+:root {
+/* Premium Dark Palette 2025 */
+--dark-bg: #0a0a0f;
+--dark-surface: #16172d;
+--dark-glass: rgba(22, 23, 45, 0.4);
+--neon-blue: #00d4ff;
+--neon-purple: #8b5cf6;
+--neon-pink: #ff0080;
+--accent-gold: #ffd700;
+--text-primary: #ffffff;
+--text-secondary: #a1a1aa;
+--text-muted: #6b7280;
+--glass-border: rgba(255, 255, 255, 0.1);
+--glow-blue: rgba(0, 212, 255, 0.3);
+--glow-purple: rgba(139, 92, 246, 0.3);
+--glow-pink: rgba(255, 0, 128, 0.3);
+}
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body {
+font-family: 'Inter', -apple-system, sans-serif;
+background: var(--dark-bg);
+color: var(--text-primary);
+line-height: 1.6;
+overflow-x: hidden;
+background: linear-gradient(135deg,
+var(--dark-bg) 0%,
+#1a1a2e 25%,
+#16213e 50%,
+var(--dark-bg) 100%);
+background-size: 400% 400%;
+animation: gradientShift 15s ease infinite;
+}
+@keyframes gradientShift {
+0%, 100% { background-position: 0% 50%; }
+50% { background-position: 100% 50%; }
+}
+.container {
+max-width: 1400px;
+margin: 0 auto;
+padding: 0 24px;
+}
