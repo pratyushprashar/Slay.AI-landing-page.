@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../ui/Button";
 import PhoneMockup from "../ui/PhoneMockup";
 import FloatingOrbs from "../animations/FloatingOrbs";
-import pic4 from "../pic/pic4.png";
+import pic4 from "../pic/pic4.webp";
 
 const Hero = ({ onCtaClick }) => {
   const heroStyle = {

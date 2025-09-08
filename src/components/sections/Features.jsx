@@ -1,8 +1,8 @@
 import React from "react";
 import GlassCard from "../ui/GlassCard";
-import pic1 from "../pic/01.png";
-import pic2 from "../pic/02.png";
-import pic3 from "../pic/03.png";
+import pic1 from "../pic/img1.webp";
+import pic2 from "../pic/img2.webp";
+import pic3 from "../pic/img3.webp";
 
 const Features = () => {
   const features = [
@@ -135,7 +135,7 @@ const Features = () => {
         }
       }
 
-      @media (max-width: 480px) {
+        @media (max-width: 480px) {
         .feature-visual {
           width: 350px !important; /* Even smaller for mobile */
           height: 650px !important;

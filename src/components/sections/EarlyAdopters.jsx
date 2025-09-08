@@ -58,7 +58,7 @@ const EarlyAdopters = () => {
     fontFamily: "'Satoshi', sans-serif",
     fontSize: 'clamp(2rem, 5vw, 3rem)',
     fontWeight: 900,
-    marginBottom: '20px',
+  
     background: 'linear-gradient(135deg, var(--neon-blue), var(--neon-purple), var(--neon-pink))',
     backgroundSize: '200% 200%',
     WebkitBackgroundClip: 'text',
@@ -79,7 +79,7 @@ const EarlyAdopters = () => {
         >
           <h2 style={titleStyle}>Join the Style Revolution</h2>
           {/* <h2 style={titleStyle}>🔥 Join 50,000+ Style Legends Who Got It Right</h2> */}
-          <p style={{ fontSize: '22px', color: 'var(--text-secondary)', marginBottom: '50px' }}>
+          <p style={{ fontSize: '22px', color: 'var(--text-secondary)', marginBottom: '25px' }}>
              Be first to experience AI that actually gets your vibe
 
           </p>
@@ -89,11 +89,12 @@ const EarlyAdopters = () => {
               maxWidth: '470px',
               margin: '0 auto',
               display: 'flex',
-              gap: '16px',
+              gap: '12px',
               padding: '12px',
               borderRadius: '20px',
               backdropFilter: 'blur(20px)',
-              border: '1px solid var(--glass-border)'
+              border: '1px solid var(--glass-border)',
+               transform: "translateY(-10px)"
             }}>
              <Input
                 type="email"
@@ -109,7 +110,7 @@ const EarlyAdopters = () => {
                 borderRadius: '12px',
                 pattern:"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
                 outline: 'none',
-                paddingLeft:'18px'
+                paddingLeft:'18px',
                 }}
               />
               <Button 
@@ -122,12 +123,13 @@ const EarlyAdopters = () => {
             </div>
           </form>
           
-          <div style={{ fontSize: '20px', color: 'var(--text-secondary)', fontWeight: 600 }}>
+          <div style={{ fontSize: '20px', color: 'var(--text-secondary)', fontWeight: 600,transform: "translateY(-19px)" }}>
             <span style={{
               color: 'var(--neon-blue)',
               fontSize: '28px',
               fontWeight: 900,
-              textShadow: '0 0 20px var(--glow-blue)'
+              textShadow: '0 0 20px var(--glow-blue)',
+                
             }}>
               <AnimatedCounter target={count} />
             </span>  trendsetters already secured their spot
