@@ -7,7 +7,7 @@ import pic3 from "../pic/03.png";
 const Features = () => {
   const features = [
     {
-      title: "One Pic = Style Decoded",
+      title: " Style DNA 🧬 Stop Guessing Your Vibe Forever",
       benefit:
         "Upload once, unlock infinite confidence. AI reads your body, skin, face—creates your personal style blueprint. Zero creepy data collection.",
       icon: "🧬",
@@ -15,18 +15,18 @@ const Features = () => {
       variant: "purple",
     },
     {
-      title: "Your Feed, Your Vibe",
+      title: " Personalized Feed ✨ Swipe Only Fire, Skip the Flop",
       benefit:
-        'Swipe through looks made for YOU. AI knows your budget, your style, today\'s trends. No more "meh" outfits—just pure fire.',
+        "Your feed serves looks made for YOUR wallet, vibe, and mood—no random stuff you'll never wear. Every swipe = something you'd actually rock. End endless scrolling, start instant outfit wins" ,
       icon: "✨",
       img: pic2,
      
       variant: "blue",
     },
     {
-      title: "See It, Believe It",
+      title: "Virtual Try-On 🎭 See Before You Regret",
       benefit:
-        "Photorealistic try-ons that'll make you do a double-take. See exactly how you'll look before you buy. No more regret shopping.",
+        "Photorealistic try-ons so accurate, you'll do a double-take. See exactly how you'll look before spending a rupee. Zero this doesn't look like the pic  moments, maximum shopping confidence.",
       icon: "🎭",
       img: pic3,
      
@@ -74,7 +74,7 @@ const Features = () => {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    transform: index % 2 === 0 ? "translateX(200px)" : "translateX(-85px)", // ✅ Alternate directions
+    transform: index % 2 === 0 ? "translateX(200px)" : "translateX(-20px)", // ✅ Alternate directions
     
   }}
 >
@@ -110,7 +110,7 @@ const Features = () => {
               transform: translateX(200px);
             }
             .feature-1 {
-              transform: translateX(-85px);
+              transform: translateX(100px);
             }
             .feature-2 {
               transform: translateX(200px);

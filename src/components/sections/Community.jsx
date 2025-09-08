@@ -1,35 +1,68 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import GlassCard from '../ui/GlassCard';
 import Button from '../ui/Button';
+import { service } from '../../services/firebase';
 
 const Community = () => {
   const [newComment, setNewComment] = useState('');
-  const [testimonials, setTestimonials] = useState([
-    {
-      text: "This AI actually gets my style better than I do. Obsessed.",
-      author: "Riley, 21, Content Creator"
-    },
-    {
-      text: "Finally found my style DNA. Every fit recommendation is pure fire 🔥",
-      author: "Jordan, 19, Student"
-    },
-    {
-      text: "The virtual try-on is scary good. Saved me from so many fashion fails.",
-      author: "Alex, 23, Designer"
-    }
-  ]);
+  const [userName, setUserName] = useState('');
+  const [testimonials, setTestimonials] = useState([]);
 
-  const handleAddComment = () => {
+  const handleAddComment = async() => {
     if (!newComment.trim()) return;
     
-    const newTestimonial = {
-      text: newComment.trim(),
-      author: "You, just now"
-    };
+   
     
+    const newTestimonial ={
+       opinion:{
+         author:userName,
+         text:newComment
+      }
+    }
+     
+      const res= await service.storeComments(userName,newTestimonial)
+      
+     
+    // const testimonial = {
+    //   id: opinions.length + 1,
+    //   name: userName,
+    //   opinion: ,
+    //   //  likes: 0,
+    //   timeStamp:Date.now(),
+      
+    // };
     setTestimonials([newTestimonial, ...testimonials]);
     setNewComment('');
+    setUserName('');
+     // Reset to first page on new post
+
+    alert("Comment submitted! 🎉 It'll go live once we give it a quick review." )
+    
+   
+    
   };
+
+  useEffect(() => {
+    (async () => {
+      const comments = await service.getComments();
+     
+   
+     setTestimonials(comments)
+     
+    })();
+  }, []);
+
+   useEffect(() => {
+  const unsubscribe = service.listenForVisibleComments((comments) => {
+    setTestimonials(comments)
+  });
+
+  // optional: detach logic if needed, e.g., using `off()` if you extend service.js
+
+  return () => {
+    // Clean up listener if you create an unsubscribe method
+  };
+}, []);
 
   const titleStyle = {
     fontFamily: "'Satoshi', sans-serif",
@@ -45,7 +78,7 @@ const Community = () => {
   return (
     <section style={{ padding: '120px 0' }} className="community">
       <div className="container">
-        <h2 style={titleStyle}>The Hype is Real</h2>
+        <h2 style={titleStyle}>The Hype is  Actually Real</h2>
         
         <div style={{
           className:"testimonials-grid",
@@ -57,6 +90,7 @@ const Community = () => {
           paddingRight: '10px'
         }}>
           {testimonials.map((testimonial, index) => (
+            
             <GlassCard key={index} className="testimonial">
               <div style={{
                 fontSize: '18px',
@@ -64,14 +98,14 @@ const Community = () => {
                 color: 'var(--text-primary)',
                 lineHeight: 1.6
               }}>
-                "{testimonial.text}"
+                "{testimonial?.opinion?.text}"
               </div>
               <div style={{
                 fontSize: '14px',
                 color: 'var(--text-muted)',
                 fontWeight: 600
               }}>
-                — {testimonial.author}
+                — {testimonial?.opinion?.author}
               </div>
             </GlassCard>
           ))}
@@ -85,16 +119,42 @@ const Community = () => {
             <textarea
               value={newComment}
               onChange={(e) => setNewComment(e.target.value)}
-              placeholder="Drop your thoughts about AI + fashion..."
+              placeholder="Share your style struggles..."
               style={{
                 background: 'rgba(255, 255, 255, 0.05)',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
                 borderRadius: '16px',
-                padding: '20px',
+                padding: '15px',
                 color: 'var(--text-primary)',
                 fontSize: '16px',
                 resize: 'none',
-                height: '120px',
+                height: '80px',
+                marginBottom: '20px',
+                backdropFilter: 'blur(10px)',
+                outline: 'none'
+              }}
+              onFocus={(e) => {
+                e.target.style.borderColor = 'var(--neon-purple)';
+                e.target.style.boxShadow = '0 0 20px var(--glow-purple)';
+              }}
+              onBlur={(e) => {
+                e.target.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                e.target.style.boxShadow = 'none';
+              }}
+            />
+             <textarea
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+              placeholder="Drop your Name"
+              style={{
+                background: 'rgba(255, 255, 255, 0.05)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                borderRadius: '16px',
+                padding: '15px',
+                color: 'var(--text-primary)',
+                fontSize: '16px',
+                resize: 'none',
+                height: '80px',
                 marginBottom: '20px',
                 backdropFilter: 'blur(10px)',
                 outline: 'none'
@@ -109,9 +169,10 @@ const Community = () => {
               }}
             />
             <Button variant="secondary" onClick={handleAddComment}>
-              Share Your Take
+              Drop Your Take
             </Button>
           </GlassCard>
+          
         </div>
       </div>
       <style>

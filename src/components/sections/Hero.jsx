@@ -40,10 +40,9 @@ const Hero = ({ onCtaClick }) => {
       <div className="container">
         <div className="hero-grid">
           <div>
-            <h1 style={titleStyle}>Never Have an Ugly Day Again</h1>
+            <h1 style={titleStyle}>Skip the Outfit Panic Forever</h1>
             <p style={benefitStyle}>
-              AI builds your Style DNA from one pic, curates fire fits for your
-              vibe, and shows you looking absolutely unreal.
+             One pic uploads your Style DNA. AI curates looks that actually hit. See yourself looking fire before you even shop.
             </p>
             <Button variant="primary" size="lg" onClick={onCtaClick}>
               Join the hype ✨
@@ -60,7 +59,7 @@ const Hero = ({ onCtaClick }) => {
                   backgroundPosition: "center",
                   borderRadius: "12px",
                   overflow: "hidden",
-                  width: "100%",
+                  width: "470px",
                   height: "800px",
                   maxWidth: "100%",
                 }}
@@ -82,7 +81,7 @@ const Hero = ({ onCtaClick }) => {
             <style>
               {`
   .phone-wrapper {
-    transform: translateX(120px);
+    transform: translateX(150px);
     transition: transform 0.3s ease;
   }
 

@@ -69,12 +69,15 @@ async  getAllEmails() {
 }
 
 async storeComments(userName,newOpinion){
+ 
     try {
        const  commentsref= ref(this.db,"comments/comment")
         const newCommentsref=push(commentsref)
+
+        const finalOpinion = newOpinion.opinion ? newOpinion.opinion : newOpinion;
         await set(newCommentsref,{
             name:userName,
-            opinion:newOpinion,
+            opinion:finalOpinion,
             isVisible:false,
             // likes: 0,
             timeStamp:Date.now()

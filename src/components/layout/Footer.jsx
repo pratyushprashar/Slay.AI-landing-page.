@@ -1,6 +1,9 @@
 import React from 'react';
 import { FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6"; // For Twitter/X icon
+import {
+  Mail,
+} from "lucide-react";
 
 const Footer = () => {
   const footerStyle = {
@@ -29,16 +32,17 @@ const Footer = () => {
   const socialLinks = [
     { icon: <FaXTwitter size={27} />, href: 'https://x.com/SlayAI_online' },
     { icon: <FaInstagram size={27} />, href: 'https://www.instagram.com/slayai_online?igsh=MWc1ajE2d2cwMGt4ZA==' },
-    {  icon: <FaYoutube size={27} />, href: 'www.youtube.com/@SlayAI.online' },
-    { icon: <FaLinkedin size={27} />, href: 'https://www.linkedin.com/company/slay-ai/' }
+    {  icon: <FaYoutube size={27} />, href: 'https://www.youtube.com/@SlayAI.online' },
+    { icon: <FaLinkedin size={27} />, href: 'https://www.linkedin.com/company/slay-ai/' },
+    { icon:  <Mail size={24} />, href: 'mailto:slayaionline@gmail.com' }
   ];
 
   return (
     <footer style={footerStyle} className="footer">
       <div className="container">
         <div style={footerContentStyle} className="footer-content">
-          <div style={{ fontSize: '16px', color: 'var(--text-secondary)', fontWeight: 600 }}>
-            <span style={brandStyle}>Slay.AI</span> — Built for everyone who wants to look amazing ✨
+          <div style={{ fontSize: '18px', color: 'var(--text-secondary)', fontWeight: 600 }}>
+            <span style={brandStyle}>Slay.AI</span> — For everyone who's tired of looking basic ✨
           </div>
           
           <div  className="footer-socials" style={{ display: 'flex', gap: '24px' }}>
