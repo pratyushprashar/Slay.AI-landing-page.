@@ -3,6 +3,10 @@ import GlassCard from "../ui/GlassCard";
 import pic1 from "../pic/img1.webp";
 import pic2 from "../pic/img2.webp";
 import pic3 from "../pic/img3.webp";
+import Video from "../video/Video";
+import v1 from "../pic/video1.mp4";
+import v2 from "../pic/video2.mp4";
+import v3 from "../pic/video3.mp4";
 
 const Features = () => {
   const features = [
@@ -11,7 +15,7 @@ const Features = () => {
       benefit:
         "Upload once, unlock infinite confidence. AI reads your body, skin, face—creates your personal style blueprint. Zero creepy data collection.",
       icon: "🧬",
-      img: pic1,
+      demoVideo: v1,
       variant: "purple",
     },
     {
@@ -19,7 +23,7 @@ const Features = () => {
       benefit:
         "Your feed serves looks made for YOUR wallet, vibe, and mood—no random stuff you'll never wear. Every swipe = something you'd actually rock. End endless scrolling, start instant outfit wins" ,
       icon: "✨",
-      img: pic2,
+      demoVideo: v2,
      
       variant: "blue",
     },
@@ -28,7 +32,7 @@ const Features = () => {
       benefit:
         "Photorealistic try-ons so accurate, you'll do a double-take. See exactly how you'll look before spending a rupee. Zero this doesn't look like the pic  moments, maximum shopping confidence.",
       icon: "🎭",
-      img: pic3,
+      demoVideo: v3,
      
       variant: "pink",
     },
@@ -89,7 +93,7 @@ const Features = () => {
        
       }}
     >
-      <img
+      {/* <img
         src={feature.img}
         alt="Feature"
         loading="lazy"
@@ -99,7 +103,8 @@ const Features = () => {
           objectFit: "cover",
           display: "block",
         }}
-      />
+      /> */}
+      <Video demoVideo={feature.demoVideo} />
     </div>
   </div>
 

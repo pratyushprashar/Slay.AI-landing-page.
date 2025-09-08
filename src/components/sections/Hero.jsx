@@ -2,7 +2,8 @@ import React from "react";
 import Button from "../ui/Button";
 import PhoneMockup from "../ui/PhoneMockup";
 import FloatingOrbs from "../animations/FloatingOrbs";
-import pic4 from "../pic/pic4.webp";
+import v4 from "../pic/video4.mp4";
+import Video from "../video/Video";
 
 const Hero = ({ onCtaClick }) => {
   const heroStyle = {
@@ -64,7 +65,7 @@ const Hero = ({ onCtaClick }) => {
                   maxWidth: "100%",
                 }}
               >
-                <img
+                {/* <img
                   src={pic4}
                   alt="Feature"
                   loading="lazy"
@@ -74,7 +75,8 @@ const Hero = ({ onCtaClick }) => {
                     objectFit: "cover",
                     display: "block",
                   }}
-                />
+                /> */}
+                <Video demoVideo={v4} />
               </div>
             </PhoneMockup>
 

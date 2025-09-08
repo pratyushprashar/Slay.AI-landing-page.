@@ -12,6 +12,7 @@ import Features from './components/sections/Features';
 import EarlyAdopters from './components/sections/EarlyAdopters';
 import Community from './components/sections/Community';
 import Footer from './components/layout/Footer';
+import Video from './components/video/Video';
 
 const App = () => {
   const scrollToSection = (sectionId) => {
@@ -36,6 +37,7 @@ const App = () => {
         <EarlyAdopters />
         <Community /> 
       </main>
+    
       
       <Footer />
     </div>
