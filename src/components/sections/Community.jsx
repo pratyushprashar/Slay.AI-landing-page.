@@ -75,9 +75,9 @@ const Community = () => {
       <div className="container">
         <h2 style={titleStyle}>The Hype is Actually Real</h2>
 
-        <div
+        <div 
+        
           style={{
-            className: "testimonials-grid",
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))",
             gap: "30px",
@@ -87,8 +87,9 @@ const Community = () => {
           }}
         >
           {testimonials.map((testimonial, index) => (
-            <GlassCard key={index} className="testimonial">
-              <div
+            <GlassCard key={index}   className="testimonial">
+              <div 
+                 
                 style={{
                   fontSize: "18px",
                   marginBottom: "20px",
@@ -186,7 +187,7 @@ const Community = () => {
       /* ✅ On small screens, make it vertical & move comment card on top */
       @media (max-width: 768px) {
         .testimonials-grid {
-          display: flex !important;
+          display: flex ;
           flex-direction: column;
         }
 
@@ -196,35 +197,47 @@ const Community = () => {
       }
        /* ✅ Small screens like iPhone SE */
           @media (max-width: 375px) {
+          html,
+          body {
+          max-width: 100%;
+          overflow-x: hidden;  /* 🚫 Disables horizontal scroll */
+         
+          }
+
             .testimonials-grid {
-              display: flex !important;
+              display: flex ;
               flex-direction: column;
               gap: 6px;
-            padding: 0 8px; /* Adds spacing */
-            overflow-x: hidden; /* 🚀 Prevents horizontal scroll */
+               max-width: 100%;
+            padding: 0 8px; 
+            overflow-x: hidden; 
               
             }
             .testimonial,
            .add-comment {
-           width: 320px !important;
+            width: 85% ;
+           max-width: 100% ;
            overflow-x: hidden;
+            box-sizing: border-box;
+            font-size:12px
+                    margin-left: 15px;
            
           }
 
             textarea {
-              font-size: 14px !important;
-              padding: 12px !important;
-              height: 50px !important;
+              font-size: 14px ;
+              padding: 12px ;
+              height: 50px ;
             }
 
             button {
-              font-size: 14px !important;
-              padding: 8px !important;
+              font-size: 14px ;
+              padding: 8px;
             }
 
             h2 {
-              font-size: 2rem !important;
-              margin-bottom: 40px !important;
+              font-size: 2rem ;
+              margin-bottom: 40px ;
             }
           }
     `}
