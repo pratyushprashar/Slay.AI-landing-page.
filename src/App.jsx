@@ -34,7 +34,7 @@ const App = () => {
        <Features/>
         {/* <QRSection /> */}
         <EarlyAdopters />
-        {/* <Community />  */}
+        <Community /> 
       </main>
       
       <Footer />

@@ -194,6 +194,39 @@ const Community = () => {
           order: -1;
         }
       }
+       /* ✅ Small screens like iPhone SE */
+          @media (max-width: 375px) {
+            .testimonials-grid {
+              display: flex !important;
+              flex-direction: column;
+              gap: 16px;
+              padding: 0 5px;
+            }
+            .testimonial{
+              width:320px
+            }
+            .add-comment {
+              order: -1; /* Comment box on top */
+              padding: 10px !important;
+              width:320px
+            }
+
+            textarea {
+              font-size: 14px !important;
+              padding: 12px !important;
+              height: 50px !important;
+            }
+
+            button {
+              font-size: 14px !important;
+              padding: 8px !important;
+            }
+
+            h2 {
+              font-size: 2rem !important;
+              margin-bottom: 40px !important;
+            }
+          }
     `}
   </style>
     </section>

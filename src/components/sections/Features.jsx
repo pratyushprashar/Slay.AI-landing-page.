@@ -142,6 +142,13 @@ const Features = () => {
           transform:none, 
         }
       }
+        @media (max-width: 375px) {
+  .feature-visual {
+    width: 320px !important; /* Even smaller width */
+    height: 600px !important; /* Reduce height */
+    transform: none;
+  }
+}
     `}
   </style>
 </GlassCard>
