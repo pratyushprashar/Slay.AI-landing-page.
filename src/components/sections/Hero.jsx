@@ -6,7 +6,7 @@ import v4 from "../pic/holax.webm";
 import Video from "../video/Video";
 
 const Hero = ({ onCtaClick }) => {
-    const videoRefs = useRef([]);
+  const videoRefs = useRef([]);
   const stopOtherVideos = (currentRef) => {
     videoRefs.current.forEach((ref) => {
       if (ref !== currentRef && ref.current) {
@@ -51,27 +51,24 @@ const Hero = ({ onCtaClick }) => {
           <div>
             <h1 style={titleStyle}>Skip the Outfit Panic Forever</h1>
             <p style={benefitStyle}>
-             One pic uploads your Style DNA. AI curates looks that actually hit. See yourself looking fire before you even shop.
+              One pic uploads your Style DNA. AI curates looks that actually
+              hit. See yourself looking fire before you even shop.
             </p>
             <Button variant="primary" size="lg" onClick={onCtaClick}>
               Join the hype ✨
             </Button>
           </div>
 
-          <div
-            className="phone-wrapper"
-          >
+          <div className="phone-wrapper">
             <PhoneMockup>
               <div
-                
-      style={{
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        borderRadius: "12px",
-        overflow: "hidden",
-        maxWidth: "100%",
-       
-      }}
+                style={{
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  borderRadius: "12px",
+                  overflow: "hidden",
+                  maxWidth: "100%",
+                }}
               >
                 {/* <img
                   src={pic4}
@@ -84,12 +81,12 @@ const Hero = ({ onCtaClick }) => {
                     display: "block",
                   }}
                 /> */}
-                <Video 
-                demoVideo={v4} 
-                 key={4}
-                 stopOtherVideos={stopOtherVideos}
-                 ref={(el) => (videoRefs.current[4] = el)}
-                 />
+                <Video
+                  demoVideo={v4}
+                  key={4}
+                  stopOtherVideos={stopOtherVideos}
+                  ref={(el) => (videoRefs.current[4] = el)}
+                />
               </div>
             </PhoneMockup>
 

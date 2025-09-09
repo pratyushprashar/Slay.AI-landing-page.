@@ -1,11 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const PhoneMockup = ({ children, className = '' }) => {
+
+  const [phoneWidth, setPhoneWidth] = useState('350px');
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 375) {
+        // ✅ iPhone SE and similar small screens
+        setPhoneWidth('320px');
+      } else {
+        setPhoneWidth('350px');
+      }
+    };
+
+    // Run on mount + on resize
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   return (
     <div className={`phone-container ${className}`}>
       <div
         style={{
-          width: '350px',
+          width: {phoneWidth},
           height: '640px',
           background: 'linear-gradient(135deg, var(--neon-purple), var(--neon-pink))',
           borderRadius: '40px',
