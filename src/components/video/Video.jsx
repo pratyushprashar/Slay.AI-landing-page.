@@ -9,7 +9,7 @@ const Video = ({ demoVideo, stopOtherVideos }) => {
 
   // Intersection Observer optimized for mobile
   const { ref, inView } = useInView({
-    threshold: 0.85, // ✅ Play only when 85% visible
+    threshold: 0.5, // ✅ Play only when 85% visible
     rootMargin: "50px 0px", // ✅ Smooth preload
     triggerOnce: false,
   });
