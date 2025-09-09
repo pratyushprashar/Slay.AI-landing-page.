@@ -5,7 +5,7 @@ const PhoneMockup = ({ children, className = '' }) => {
     <div className={`phone-container ${className}`}>
       <div
         style={{
-          width: '320px',
+          width: '350px',
           height: '640px',
           background: 'linear-gradient(135deg, var(--neon-purple), var(--neon-pink))',
           borderRadius: '40px',
