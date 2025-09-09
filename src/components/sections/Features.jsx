@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import GlassCard from "../ui/GlassCard";
 // import pic1 from "../pic/img1.webp";
 // import pic2 from "../pic/img2.webp";
@@ -9,6 +9,7 @@ import v2 from "../pic/2.webm";
 import v3 from "../pic/3.webm";
 
 const Features = () => {
+  const videoRefs = useRef([]);
   const features = [
     {
       title: " Style DNA 🧬 Stop Guessing Your Vibe Forever",
@@ -54,6 +55,14 @@ const Features = () => {
     color: "var(--text-secondary)",
     marginBottom: "20px",
     lineHeight: 1.7,
+  };
+
+    const stopOtherVideos = (currentRef) => {
+    videoRefs.current.forEach((ref) => {
+      if (ref !== currentRef && ref.current) {
+        ref.current.pause();
+      }
+    });
   };
 
   return (
@@ -104,7 +113,9 @@ const Features = () => {
           display: "block",
         }}
       /> */}
-      <Video demoVideo={feature.demoVideo} />
+      <Video demoVideo={feature.demoVideo} key={index}
+          stopOtherVideos={stopOtherVideos}
+          ref={(el) => (videoRefs.current[index] = el)} />
     </div>
   </div>
 

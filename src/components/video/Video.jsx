@@ -1,65 +1,64 @@
 import React, { useRef, useEffect, useState } from "react";
+import { HiVolumeOff, HiVolumeUp } from "react-icons/hi";
 import { useInView } from "react-intersection-observer";
-import { HiVolumeOff, HiVolumeUp } from "react-icons/hi"
 
-
-const Video = ({demoVideo}) => {
+const Video = ({ demoVideo, stopOtherVideos }) => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
-    const [isMuted, setIsMuted] = useState(true); // ✅ Mute state
+  const [isMuted, setIsMuted] = useState(true);
 
-  // Intersection Observer hook
+  // Intersection Observer optimized for mobile
   const { ref, inView } = useInView({
-    threshold: 0.5, // Trigger when 50% is visible
-    triggerOnce: false, // Re-run when visibility changes
+    threshold: 0.85, // ✅ Play only when 85% visible
+    rootMargin: "50px 0px", // ✅ Smooth preload
+    triggerOnce: false,
   });
 
-  // Autoplay when video is visible
+  // Play / Pause based on visibility
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    if (inView) {
-      // Force autoplay after small delay
-      const timer = setTimeout(() => {
-        video
-          .play()
-          .then(() => setIsPlaying(true))
-          .catch((err) => {
-            console.warn("Autoplay blocked, click required:", err);
-            setIsPlaying(false);
-          });
-      }, 100);
+    // Pause when out of view
+    if (!inView && !video.paused) {
+      video.pause();
+      setIsPlaying(false);
+      return;
+    }
 
-      return () => clearTimeout(timer);
+    // If visible, request other videos to pause
+    if (inView) {
+      stopOtherVideos(videoRef); // ✅ Ensures only ONE video plays
+      video
+        .play()
+        .then(() => setIsPlaying(true))
+        .catch(() => setIsPlaying(false));
+    }
+  }, [inView, stopOtherVideos]);
+
+  // Toggle play/pause on click
+  const handleVideoClick = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (video.paused) {
+      stopOtherVideos(videoRef);
+      video.play();
+      setIsPlaying(true);
     } else {
       video.pause();
       setIsPlaying(false);
     }
-  }, [inView]);
+  };
 
-    // Toggle mute/unmute
+  // Toggle mute/unmute
   const handleMuteToggle = (e) => {
-    e.stopPropagation(); // ✅ Prevents triggering play/pause
+    e.stopPropagation();
     const video = videoRef.current;
     if (!video) return;
 
     video.muted = !isMuted;
     setIsMuted(!isMuted);
-  };
-
-  // Handle click to toggle play/pause
-  const handleVideoClick = () => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    if (isPlaying) {
-      video.pause();
-      setIsPlaying(false);
-    } else {
-      video.play().catch(() => {});
-      setIsPlaying(true);
-    }
   };
 
   return (
@@ -68,45 +67,33 @@ const Video = ({demoVideo}) => {
       style={{
         position: "relative",
         width: "100%",
-        maxWidth: "360px",
-        aspectRatio: "9/16", // Perfect vertical video ratio
-        margin: "20px auto",
+        maxWidth: "400px",
+        aspectRatio: "9 / 16",
+        margin: "16px auto",
         borderRadius: "16px",
         overflow: "hidden",
-        boxShadow: "0 8px 20px rgba(0, 0, 0, 0.3)",
         backgroundColor: "#000",
+        boxShadow: "0 6px 16px rgba(0, 0, 0, 0.3)",
         cursor: "pointer",
       }}
     >
-      {inView ? (
-        <video
-          ref={videoRef}
-          src={demoVideo}
-          playsInline
-          muted
-          loop
-          preload="metadata"
-          onClick={handleVideoClick}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            display: "block",
-            cursor: "pointer",
-          }}
-        />
-      ) : (
-        <div
-          style={{
-            width: "100%",
-            height: "100%",
-            backgroundColor: "#e5e7eb",
-            animation: "pulse 1.5s infinite",
-          }}
-        ></div>
-      )}
+      <video
+        ref={videoRef}
+        src={demoVideo}
+        playsInline
+        muted={isMuted}
+        loop
+        preload="metadata"
+        onClick={handleVideoClick}
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          display: "block",
+        }}
+      />
 
-      {/* Play / Pause Overlay Icon */}
+      {/* Play Icon Overlay */}
       {!isPlaying && inView && (
         <div
           style={{
@@ -114,40 +101,29 @@ const Video = ({demoVideo}) => {
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-            borderRadius: "50%",
-            width: "60px",
-            height: "60px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
             color: "#fff",
-            fontSize: "28px",
+            fontSize: "40px",
             pointerEvents: "none",
+            textShadow: "0px 0px 8px rgba(0,0,0,0.7)",
           }}
         >
           ▶
         </div>
       )}
 
-
-      {/* Mute/Unmute button */}
-       <button
+      {/* Mute / Unmute Button */}
+      <button
         onClick={handleMuteToggle}
         style={{
           position: "absolute",
           bottom: "12px",
           right: "12px",
-          background: "transparent", // ✅ No background
+          background: "transparent",
           border: "none",
           color: "#fff",
-          fontSize: "26px",
           cursor: "pointer",
-          zIndex: 10,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          filter: "drop-shadow(0px 0px 5px rgba(0,0,0,0.7))", // ✅ Better visibility
+          fontSize: "26px",
+          filter: "drop-shadow(0px 0px 4px rgba(0,0,0,0.7))",
         }}
       >
         {isMuted ? <HiVolumeOff size={19} /> : <HiVolumeUp size={19} />}

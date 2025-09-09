@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useRef } from "react";
 import Button from "../ui/Button";
 import PhoneMockup from "../ui/PhoneMockup";
 import FloatingOrbs from "../animations/FloatingOrbs";
 import v4 from "../pic/holax.webm";
-// import v4 from "../pic/header.webm";
 import Video from "../video/Video";
 
 const Hero = ({ onCtaClick }) => {
+    const videoRefs = useRef([]);
+  const stopOtherVideos = (currentRef) => {
+    videoRefs.current.forEach((ref) => {
+      if (ref !== currentRef && ref.current) {
+        ref.current.pause();
+      }
+    });
+  };
   const heroStyle = {
     minHeight: "100vh",
     display: "flex",
@@ -77,7 +84,12 @@ const Hero = ({ onCtaClick }) => {
                     display: "block",
                   }}
                 /> */}
-                <Video demoVideo={v4} />
+                <Video 
+                demoVideo={v4} 
+                 key={4}
+                 stopOtherVideos={stopOtherVideos}
+                 ref={(el) => (videoRefs.current[4] = el)}
+                 />
               </div>
             </PhoneMockup>
 
