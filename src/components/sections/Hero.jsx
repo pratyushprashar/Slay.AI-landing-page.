@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../ui/Button";
 import PhoneMockup from "../ui/PhoneMockup";
 import FloatingOrbs from "../animations/FloatingOrbs";
-import v4 from "../pic/video4.mp4";
+import v4 from "../pic/header.webm";
 import Video from "../video/Video";
 
 const Hero = ({ onCtaClick }) => {
@@ -61,7 +61,7 @@ const Hero = ({ onCtaClick }) => {
                   borderRadius: "12px",
                   overflow: "hidden",
                   width: "470px",
-                  height: "800px",
+                  height: "700px",
                   maxWidth: "100%",
                 }}
               >

@@ -1,12 +1,12 @@
 import React from "react";
 import GlassCard from "../ui/GlassCard";
-import pic1 from "../pic/img1.webp";
-import pic2 from "../pic/img2.webp";
-import pic3 from "../pic/img3.webp";
+// import pic1 from "../pic/img1.webp";
+// import pic2 from "../pic/img2.webp";
+// import pic3 from "../pic/img3.webp";
 import Video from "../video/Video";
-import v1 from "../pic/video1.mp4";
-import v2 from "../pic/video2.mp4";
-import v3 from "../pic/video3.mp4";
+import v1 from "../pic/1.webm";
+import v2 from "../pic/2.webm";
+import v3 from "../pic/3.webm";
 
 const Features = () => {
   const features = [
@@ -73,7 +73,7 @@ const Features = () => {
   variant={feature.variant}
   className="feature-visual"
   style={{
-    height: "800px",
+    height: "700px",
     width: "400px",
     display: "flex",
     alignItems: "center",
